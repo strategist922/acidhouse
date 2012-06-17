@@ -27,12 +27,12 @@ import org.eiichiro.acidhouse.Order;
  * You can get several {@code ComparableFilter} instances from this class, and 
  * then pass them to command's {@code #filter(Filter...)} methods, like this: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Create 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Create 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Qualify entities which their 'entity1.i' proerty is greater than or equal 
@@ -45,12 +45,12 @@ import org.eiichiro.acidhouse.Order;
  * </pre>
  * And sorting order. Like this: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Create 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Create 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Get all 'Entity3' entities sorted by 'entity1.i' property in descending 

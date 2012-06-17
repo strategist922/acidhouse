@@ -16,7 +16,7 @@
 package org.eiichiro.acidhouse;
 
 /**
- * {@code Transaction} represents a DatastoreSession transaction.
+ * {@code Transaction} represents a Session transaction.
  * 
  * @author <a href="mailto:eiichiro@eiichiro.org">Eiichiro Uchiumi</a>
  */

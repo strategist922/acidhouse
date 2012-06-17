@@ -80,7 +80,7 @@ public class Log {
 	 * sequence in session, operation type and the entity which this operation 
 	 * is applied to.
 	 * 
-	 * @param sequence The operation sequence in one {@code DatastoreSession}.
+	 * @param sequence The operation sequence in one {@code Session}.
 	 * @param operation The operation.
 	 * @param entity The entity which this operation is applied to.
 	 */

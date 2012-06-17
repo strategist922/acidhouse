@@ -23,7 +23,7 @@ import org.eiichiro.acidhouse.metamodel.Property;
  * {@code Aggregation} is the base class of aggregation implementation.
  * You can aggregate one property of the <code>GetList</code> command result, 
  * by specifying this classes' concrete instance to 
- * {@link DatastoreSession#get(Aggregation)} method.
+ * {@link Session#get(Aggregation)} method.
  * Class {@code Aggregations} has some factory methods to provide useful 
  * {@code Aggregation} instances.
  * 

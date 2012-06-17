@@ -18,7 +18,7 @@ package org.eiichiro.acidhouse;
 import java.util.List;
 
 /**
- * {@code IndoubtException} is thrown by {@code DatastoreSession} when it 
+ * {@code IndoubtException} is thrown by {@code Session} when it 
  * detects the data is consistency broken (The situation that there are 
  * committed operations and uncommitted operations in one transaction). If you 
  * get this exception, you have to recover your data consistency immediately 

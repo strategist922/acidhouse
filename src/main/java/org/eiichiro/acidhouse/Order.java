@@ -25,12 +25,12 @@ import org.eiichiro.acidhouse.metamodel.ComparableProperty;
  * You can get {@code Order} instance from metamodel property and can pass to 
  * {@code GetList} and {@code GetScalar}. As an example: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Create 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Create 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Get all 'Entity3' entities sorted by 'entity1.i' property in descending 

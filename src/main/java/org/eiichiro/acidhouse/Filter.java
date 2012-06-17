@@ -24,12 +24,12 @@ import org.eiichiro.acidhouse.metamodel.Property;
  * {@code filter(Filter...)} method. 
  * As an example in App Engine: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Creating 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Creating 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Getting metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Qualifying entities which their 'entity1.i' proerty is greater than or 

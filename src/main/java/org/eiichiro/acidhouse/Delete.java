@@ -21,12 +21,12 @@ package org.eiichiro.acidhouse;
  * command execution returns the count of deleted entities. You can build &amp; 
  * execute this command as the following code, in App Engine example: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Creating 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Creating 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Beginning transaction.
  * Transaction transaction = session.beginTransaction();
  * // Getting metamodel instance of 'Entity3' class.

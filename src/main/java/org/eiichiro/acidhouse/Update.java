@@ -19,16 +19,16 @@ import org.eiichiro.acidhouse.metamodel.Property;
 
 /**
  * {@code Update} is a command interface to update properties of 
- * DatastoreSession entity matches to the specified {@code Filter}s with the specified 
+ * Session entity matches to the specified {@code Filter}s with the specified 
  * value in Acid House's transactional session.
  * This command execution returns the count of updated entities. You can build 
  * &amp; execute this command as the following code: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Transaction transaction = session.beginTransaction();
  * 
  * try {

@@ -50,7 +50,7 @@ import java.lang.annotation.Target;
  * entity72.i = 72;
  * entity72.entity1 = entity1;
  * 
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Transaction transaction = session.beginTransaction();
  * 
  * try {

@@ -26,13 +26,13 @@ import org.eiichiro.acidhouse.metamodel.Property;
  * You can get popular aggregations by using this class. For example: 
  * <pre>
  * import org.eiichiro.acidhouse.Aggregations;
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.metamodel.Metamodels;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Create 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Create 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Get max value of "Entity3"'s 'i' property from 'Entity3' instances which 

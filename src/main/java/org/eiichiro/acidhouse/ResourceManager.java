@@ -20,7 +20,7 @@ import java.util.ConcurrentModificationException;
 /**
  * {@code ResourceManager} manages an entity instance, datastore connection 
  * corresponding to the entity and its transactional state.
- * {@code ResourceManager} is instantiated and invoked by {@code DatastoreSession} 
+ * {@code ResourceManager} is instantiated and invoked by {@code Session} 
  * and {@code Coordinator} (especially, in distributed transaction), and applies 
  * datastore operation to the managed entity with the datastore-specific APIs.
  * 

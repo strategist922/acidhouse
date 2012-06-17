@@ -25,12 +25,12 @@ package org.eiichiro.acidhouse;
  * You can build &amp; execute this command as the following code, in App 
  * Engine: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Create 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Create 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Get summary of 'i' field of the 'Entity3' entities which their 'i' field 

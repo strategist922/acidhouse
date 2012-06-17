@@ -16,7 +16,7 @@
 package org.eiichiro.acidhouse;
 
 /**
- * {@code EntityExistsException} is thrown by {@code DatastoreSession#put()} 
+ * {@code EntityExistsException} is thrown by {@code Session#put()} 
  * operation when the specified entity has already existed in the datastore.
  * 
  * @author <a href="mailto:eiichiro@eiichiro.org">Eiichiro Uchiumi</a>

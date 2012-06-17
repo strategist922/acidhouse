@@ -17,7 +17,7 @@ package org.eiichiro.acidhouse;
 
 /**
  * {@code Coordinator} is a transaction coordinator for "Two-phase commit protocol".
- * {@code Coordinator} is instantiated by {@code DatastoreSession} when a 
+ * {@code Coordinator} is instantiated by {@code Session} when a 
  * transaction is started and every transactional operation is forwarded to the 
  * coordinator. If multiple entities are updated (also, inserted and deleted) in 
  * a transaction, the coordinator has to make multiple {@code ResourceManager}s 

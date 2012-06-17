@@ -20,12 +20,12 @@ import java.util.ConcurrentModificationException;
 import org.eiichiro.acidhouse.metamodel.Metamodel;
 
 /**
- * {@code DatastoreSession} is the central client-interfaced object to control 
+ * {@code Session} is the central client-interfaced object to control 
  * NoSQL datastore on Acid House and represents interactive session between 
  * client and NoSQL datastore.
  * Basic CRUD operations are like this, in App Engine example: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
@@ -36,7 +36,7 @@ import org.eiichiro.acidhouse.metamodel.Metamodel;
  * Entity1 entity12 = new Entity1();
  * entity12.id = "Key12";
  * entity12.i = 12;
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Transaction transaction = session.beginTransaction();
  * 
  * try {
@@ -52,14 +52,14 @@ import org.eiichiro.acidhouse.metamodel.Metamodel;
  * 
  * 
  * // Reading entity.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Entity1 entity11 = session.get(Entity1.class, "Key11");
  * Entity1 entity12 = session.get(Entity1.class, "Key12");
  * session.close();
  * 
  * 
  * // Updating entity.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Transaction transaction = session.beginTransaction();
  * 
  * try {
@@ -79,7 +79,7 @@ import org.eiichiro.acidhouse.metamodel.Metamodel;
  * 
  * 
  * // Deleting entity.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * Session session = new AppEngineDatastoreSession();
  * Transaction transaction = session.beginTransaction();
  * 
  * try {
@@ -98,7 +98,7 @@ import org.eiichiro.acidhouse.metamodel.Metamodel;
  * 
  * @author <a href="mailto:eiichiro@eiichiro.org">Eiichiro Uchiumi</a>
  */
-public interface DatastoreSession {
+public interface Session {
 
 	/**
 	 * Begins transaction.
@@ -134,7 +134,7 @@ public interface DatastoreSession {
 	 * the specified entity has been already stored, this method might throw 
 	 * {@code EntityExistsException}.
 	 * 
-	 * @param entity The entity instance to be put into DatastoreSession.
+	 * @param entity The entity instance to be put into Session.
 	 * @throws EntityExistsException If the entity that has the same key as the 
 	 * specified entity has already existed.
 	 */

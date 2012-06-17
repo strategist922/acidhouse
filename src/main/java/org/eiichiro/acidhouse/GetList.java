@@ -24,12 +24,12 @@ import java.util.List;
  * view. You can build &amp; execute this command as the following code, in App 
  * Engine example: 
  * <pre>
- * import org.eiichiro.acidhouse.DatastoreSession;
+ * import org.eiichiro.acidhouse.Session;
  * import org.eiichiro.acidhouse.appengine.AppEngineDatastoreSession;
  * ...
  * 
- * // Creating 'DatastoreSession' instance.
- * DatastoreSession session = new AppEngineDatastoreSession();
+ * // Creating 'Session' instance.
+ * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
  * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
  * // Filtering: "Entity3"'s 'entity1.i' property is greater than or equal to 13, 
