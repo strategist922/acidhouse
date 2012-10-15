@@ -16,7 +16,9 @@
 package org.eiichiro.acidhouse.metamodel;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eiichiro.reverb.lang.UncheckedException;
@@ -33,11 +35,13 @@ public class Property<E, T> {
 
 	private final Metamodel<E> metamodel;
 	
-	private final Class<T> type;
+	private final Property<E, ?> parent;
+	
+	private final Type type;
 	
 	private final String name;
 	
-	private final List<String> path = new ArrayList<String>();
+	private final List<String> path;
 	
 	/**
 	 * Returns the property name which this metamodel property represents.
@@ -57,27 +61,29 @@ public class Property<E, T> {
 	 * @param type The property type.
 	 * @param name The property name.
 	 */
-	public Property(Metamodel<E> metamodel, Class<T> type, String name) {
+	public Property(Metamodel<E> metamodel, Type type, String name) {
 		this.metamodel = metamodel;
+		parent = null;
 		this.type = type;
 		this.name = name;
-		List<String> path = new ArrayList<String>();
-		path.add(name);
-		
-		if (!metamodel.isRoot()) {
-			path.add(metamodel.name());
-		}
-		
-		Metamodel<?> parent = metamodel.parent();
-		
-		while (parent != null && !parent.isRoot()) {
-			path.add(parent.name());
-			parent = parent.parent();
-		}
-		
-		for (int i = path.size() - 1; i >= 0; i--) {
-			this.path().add(path.get(i));
-		}
+		path = path(metamodel, name);
+	}
+	
+	/**
+	 * Constructs a new {@code Property} instance with the specified 
+	 * {@code EmbeddedProperty}, property type and property name.
+	 * 
+	 * @param parent The parent {@code Property} instance which has this metamodel 
+	 * property.
+	 * @param type The property type.
+	 * @param name The property name.
+	 */
+	public Property(Property<E, ?> parent, Type type, String name) {
+		this.metamodel = parent.metamodel();
+		this.parent = parent;
+		this.type = type;
+		this.name = name;
+		path = path(metamodel, name, parent.name());
 	}
 	
 	/**
@@ -127,11 +133,9 @@ public class Property<E, T> {
 	 */
 	public void set(E entity, Object value) {
 		Object object = entity;
-		StringBuilder pathstring = new StringBuilder(path().get(0));
 		
 		for (int i = 0; i < path().size() - 1; i++) {
 			try {
-				pathstring.append(".").append(path().get(i));
 				Field field = object.getClass().getDeclaredField(path().get(i));
 				field.setAccessible(true);
 				object = field.get(object);
@@ -148,13 +152,24 @@ public class Property<E, T> {
 			throw new UncheckedException(e);
 		}
 	}
+	
+	/**
+	 * Returns the parent {@code Property} instance which has this metamodel 
+	 * property.
+	 * 
+	 * @return The parent {@code Property} instance which has this metamodel 
+	 * property.
+	 */
+	public Property<E, ?> parent() {
+		return parent;
+	}
 
 	/**
 	 * Returns the property type which this metamodel property represents.
 	 * 
 	 * @return The property type which this metamodel property represents.
 	 */
-	public Class<T> type() {
+	public Type type() {
 		return type;
 	}
 	
@@ -164,6 +179,28 @@ public class Property<E, T> {
 	 * @return The {@code String} path representation to this property.
 	 */
 	public List<String> path() {
+		return path;
+	}
+	
+	private List<String> path(Metamodel<E> metamodel, String... names) {
+		List<String> path = new ArrayList<String>();
+		
+		for (String name : names) {
+			path.add(name);
+		}
+		
+		if (!metamodel.isRoot()) {
+			path.add(metamodel.name());
+		}
+		
+		Metamodel<?> parent = metamodel.parent();
+		
+		while (parent != null && !parent.isRoot()) {
+			path.add(parent.name());
+			parent = parent.parent();
+		}
+		
+		Collections.reverse(path);
 		return path;
 	}
 	

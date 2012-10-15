@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.eiichiro.acidhouse.ComparableFilter.Operator;
 import org.eiichiro.acidhouse.metamodel.ComparableProperty;
+import org.eiichiro.acidhouse.metamodel.EmbeddedProperty;
 import org.eiichiro.acidhouse.metamodel.Property;
 
 /**
@@ -133,13 +134,14 @@ public class InFilter<T extends Comparable<T>> implements Filter<T> {
 	 */
 	@Override
 	public String toString() {
+		String name = (property.parent() instanceof EmbeddedProperty) 
+				? property.parent().name() + "." + property.name() : property.name();
 		StringBuilder builder = new StringBuilder("(");
-		builder.append(property.name() + " " + Operator.EQUAL_TO + " "
+		builder.append(name + " " + Operator.EQUAL_TO + " "
 				+ toFilterString(values.get(0)));
 		
 		for (int i = 1; i < values.size(); i++) {
-			builder.append(" || " + property.name() + " " 
-					+ Operator.EQUAL_TO + " " + toFilterString(values.get(i)));
+			builder.append(" || " + name + " " + Operator.EQUAL_TO + " " + toFilterString(values.get(i)));
 		}
 		
 		return builder.append(")").toString();

@@ -18,6 +18,7 @@ package org.eiichiro.acidhouse;
 import java.util.Comparator;
 
 import org.eiichiro.acidhouse.metamodel.ComparableProperty;
+import org.eiichiro.acidhouse.metamodel.EmbeddedProperty;
 
 /**
  * {@code Order} represents a sorting order for Acid Houses' typesafe "Command 
@@ -117,7 +118,9 @@ public class Order<E, T extends Comparable<T>> implements Comparator<E> {
 	 */
 	@Override
 	public String toString() {
-		return property.name() + " " + direction;
+		String name = (property.parent() instanceof EmbeddedProperty) 
+				? property.parent().name() + "." + property.name() : property.name();
+		return name + " " + direction;
 	}
 	
 }

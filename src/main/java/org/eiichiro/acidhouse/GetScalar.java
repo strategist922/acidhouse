@@ -32,12 +32,12 @@ package org.eiichiro.acidhouse;
  * // Create 'Session' instance.
  * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
- * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
+ * Entity3$ entity3$ = Metamodels.metamodel(Entity3.class);
  * // Get summary of 'i' field of the 'Entity3' entities which their 'i' field 
  * // is less than 5.
  * int sum = session
- * 		.get(Aggregations.sum(entity3_.i))
- * 		.filter(entity3_.i.lessThan(5))
+ * 		.get(Aggregations.sum(entity3$.i))
+ * 		.filter(entity3$.i.lessThan(5))
  * 		.execute();
  * </pre>
  * 

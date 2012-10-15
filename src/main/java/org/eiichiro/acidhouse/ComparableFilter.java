@@ -16,6 +16,7 @@
 package org.eiichiro.acidhouse;
 
 import org.eiichiro.acidhouse.metamodel.ComparableProperty;
+import org.eiichiro.acidhouse.metamodel.EmbeddedProperty;
 import org.eiichiro.acidhouse.metamodel.Property;
 
 /**
@@ -167,7 +168,9 @@ public class ComparableFilter<T extends Comparable<T>> implements Filter<T> {
 		Object value = this.value();
 		String string = (value instanceof String) ? "\"" + value + "\"" 
 				: value.toString();
-		return property.name() + " " + operator() + " " + string;
+		String name = (property.parent() instanceof EmbeddedProperty) 
+				? property.parent().name() + "." + property.name() : property.name();
+		return name + " " + operator() + " " + string;
 	}
 
 	/** Returns the operator type this {@code ComparableFilter} does filtering. */

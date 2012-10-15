@@ -30,13 +30,13 @@ package org.eiichiro.acidhouse;
  * // Beginning transaction.
  * Transaction transaction = session.beginTransaction();
  * // Getting metamodel instance of 'Entity3' class.
- * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
+ * Entity3$ entity3$ = Metamodels.metamodel(Entity3.class);
  * 
  * try {
  * 	// Deleting all of 'Entity3' entities which their 'entity1.i' property value 
  *  // is less than 15.
- * 	session.delete(entity3_)
- * 			.filter(entity3_.entity1.i.lessThan(15))
+ * 	session.delete(entity3$)
+ * 			.filter(entity3$.entity1.i.lessThan(15))
  * 			.execute();
  * 	// Committing transaction.
  * 	transaction.commit();

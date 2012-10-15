@@ -38,7 +38,7 @@ public abstract class Metamodel<E> {
 	 * @param type The entity type.
 	 */
 	public Metamodel(Class<E> type) {
-		this(type, null, "");
+		this(null, type, "");
 	}
 	
 	/**
@@ -46,15 +46,15 @@ public abstract class Metamodel<E> {
 	 * type, parent metamodel and metamodel name. This constructor is called 
 	 * if the represented entity is declared as owned child entity property.
 	 * 
-	 * @param type The entity type.
 	 * @param parent The parent entity metamodel when this instance is declared 
 	 * as owned child entity property.
+	 * @param type The entity type.
 	 * @param name The metamodel name when this instance is declared as owned 
 	 * child entity property.
 	 */
-	public Metamodel(Class<E> type, Metamodel<?> parent, String name) {
-		this.type = type;
+	public Metamodel(Metamodel<?> parent, Class<E> type, String name) {
 		this.parent = parent;
+		this.type = type;
 		this.name = name;
 		
 		if (parent != null && !parent.hasChild) {

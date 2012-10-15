@@ -15,6 +15,7 @@
  */
 package org.eiichiro.acidhouse;
 
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 
@@ -146,7 +147,7 @@ public abstract class Aggregations {
 	
 	private static class Sum<T extends Number & Comparable<T>> extends Aggregation<T> {
 
-		private final Class<T> type;
+		private final Type type;
 		
 		public Sum(Property<?, T> property) {
 			super(property);

@@ -31,18 +31,18 @@ import java.util.List;
  * // Creating 'Session' instance.
  * Session session = new AppEngineDatastoreSession();
  * // Get metamodel instance of 'Entity3' class.
- * Entity3_ entity3_ = Metamodels.metamodel(Entity3.class);
+ * Entity3$ entity3$ = Metamodels.metamodel(Entity3.class);
  * // Filtering: "Entity3"'s 'entity1.i' property is greater than or equal to 13, 
  * // and 15 or 16 or 17 or 18 or 19 or 20.
  * // Range: from 1 to 3 (offset value).
  * // Ordering: In descending order of "Entity3"'s 'i' property.
  * List&lt;Entity3&gt; entity3s = session
- * 		.get(entity3_)
- * 		.filter(entity3_.entity1.i.greaterThanOrEqualTo(13), 
- * 			entity3_.entity1.i.in(15, 16, 17, 18, 19, 20))
+ * 		.get(entity3$)
+ * 		.filter(entity3$.entity1.i.greaterThanOrEqualTo(13), 
+ * 			entity3$.entity1.i.in(15, 16, 17, 18, 19, 20))
  * 		.offset(1)
  * 		.limit(3)
- * 		.sort(entity3_.i.desc)
+ * 		.sort(entity3$.i.desc)
  * 		.execute();
  * </pre>
  * 

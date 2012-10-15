@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 
 /**
  * {@code @Entity} is a marker annotation to tell Acid House that the annotated 
- * class is an entity class managed by Acid House.
+ * class is an entity class to be managed by Acid House.
  * {@code Entity} is a POJO (Plain Old Java Object), and can represent a 
  * hierarchical structure (not relationship) as the ownership of member objects. 
  * The hierarchy is appropriately mapped to the datastore-specific data model by 

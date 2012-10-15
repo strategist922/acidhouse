@@ -15,6 +15,8 @@
  */
 package org.eiichiro.acidhouse.metamodel;
 
+import java.lang.reflect.Type;
+
 import org.eiichiro.acidhouse.ComparableFilter;
 import org.eiichiro.acidhouse.ComparableFilter.Operator;
 import org.eiichiro.acidhouse.Filter;
@@ -80,12 +82,28 @@ public class ComparableProperty<E, T extends Comparable<T>> extends Property<E, 
 	 * @param type The property type.
 	 * @param name The property name.
 	 */
-	public ComparableProperty(Metamodel<E> metamodel, Class<T> type, String name) {
+	public ComparableProperty(Metamodel<E> metamodel, Type type, String name) {
 		super(metamodel, type, name);
 		desc = new Order<E, T>(this, Order.Direction.DESC);
 		asc = new Order<E, T>(this, Order.Direction.ASC);
 	}
 
+	/**
+	 * Constructs a new {@code ComparableProperty} instance with the specified 
+	 * {@code Property} instance which has this metamodel property, property 
+	 * type and property name.
+	 * 
+	 * @param parent The parent {@code Property} instance which has this metamodel 
+	 * property.
+	 * @param type The property type.
+	 * @param name The property name.
+	 */
+	public ComparableProperty(Property<E, ?> parent, Type type, String name) {
+		super(parent, type, name);
+		desc = new Order<E, T>(this, Order.Direction.DESC);
+		asc = new Order<E, T>(this, Order.Direction.ASC);
+	}
+	
 	/**
 	 * Creates a {@code Filter} to indicate whether this property is equal to 
 	 * the specified value or not (==).

@@ -33,9 +33,9 @@ import org.eiichiro.acidhouse.metamodel.Property;
  * 
  * try {
  * 	session.update(Entity3.class)
- * 			.property(entity3_.i, 100)
- * 			.property(entity3_.entity1.i, 200)
- * 			.filter(entity3_.id.equalTo("Key1"))
+ * 			.property(entity3$.i, 100)
+ * 			.property(entity3$.entity1.i, 200)
+ * 			.filter(entity3$.id.equalTo("Key1"))
  * 			.execute();
  * 	transaction.commit();
  * } catch (Exception e) {
