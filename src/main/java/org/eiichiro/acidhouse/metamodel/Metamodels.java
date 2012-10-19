@@ -35,8 +35,8 @@ public abstract class Metamodels {
 	/**
 	* Creates {@code Metamodel} instance corresponding to the specified entity 
 	* class.
-	* {@code Metamodel} class have to be declared as the name that adding '$' 
-	* suffix to the entity class name in the same package as the entity class.
+	* {@code Metamodel} class have to be declared as the name that adding '_' 
+	* prefix to the entity class name in the same package as the entity class.
 	* 
 	* @param <M> The type of metamodel class.
 	* @param <E> The type of entity class.
@@ -50,7 +50,18 @@ public abstract class Metamodels {
 			return (M) metamodels.get(entity);
 		} else {
 			try {
-				M metamodel = (M) Class.forName(entity.getName() + "$").newInstance();
+				int i = entity.getName().lastIndexOf(".");
+				M metamodel = null;
+				
+				if (i < 0) {
+					metamodel = (M) Class.forName("_" + entity.getName()).newInstance();
+				} else {
+					metamodel = (M) Class.forName(
+							entity.getName().substring(0, entity.getName().lastIndexOf(".") + 1) 
+							+ "_" 
+							+ entity.getName().substring(entity.getName().lastIndexOf(".") + 1)).newInstance();
+				}
+				
 				metamodels.put(entity, metamodel);
 				return metamodel;
 			} catch (Exception e) {

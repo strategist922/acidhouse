@@ -33,8 +33,14 @@ import org.eiichiro.acidhouse.metamodel.Property;
  * 
  * try {
  * 	session.update(Entity3.class)
- * 			.property(entity3$.i, 100)
- * 			.property(entity3$.entity1.i, 200)
+ * 			.set(entity3$.i, 100)
+ * 			.set(entity3$.entity1.i, new Modification&lt;Integer&gt;() {
+ * 
+ * 				public Integer apply(Integer from) {
+ * 					return from + 10;
+ * 				}
+ * 
+ * 			})
  * 			.filter(entity3$.id.equalTo("Key1"))
  * 			.execute();
  * 	transaction.commit();
@@ -51,7 +57,7 @@ import org.eiichiro.acidhouse.metamodel.Property;
 public interface Update<E> extends Command<Integer> {
 
 	/**
-	 * Qualifies property to be updated by this {@code Update}.
+	 * Qualifies property and the value to be updated.
 	 * 
 	 * @param property The property to be updated by this 
 	 * {@code Update}.
@@ -59,7 +65,18 @@ public interface Update<E> extends Command<Integer> {
 	 * @return The {@code Update} to update the specified entity 
 	 * properties.
 	 */
-	public <T> Update<E> property(Property<?, T> property, T value);
+	public <T> Update<E> set(Property<?, T> property, T value);
+	
+	/**
+	 * Qualifies property to be updated and the modification function.
+	 * 
+	 * @param property The property to be updated by this 
+	 * {@code Update}.
+	 * @param modification The modification function applied to the property.
+	 * @return The {@code Update} to update the specified entity 
+	 * properties.
+	 */
+	public <T> Update<E> set(Property<?, T> property, Modification<T> modification);
 	
 	/**
 	 * Qualifies entities to be updated with the specified {@code Filter}s.
@@ -70,5 +87,22 @@ public interface Update<E> extends Command<Integer> {
 	 * specified {@code Filter}s.
 	 */
 	public Update<E> filter(Filter<?>... filters);
+	
+	/**
+	 * Modification function applied to the property to be updated.
+	 * 
+	 * @author <a href="mailto:eiichiro@eiichiro.org">Eiichiro Uchiumi</a>
+	 */
+	public static interface Modification<T> {
+		
+		/**
+		 * Applies this modification function to the property.
+		 * 
+		 * @param from Existing value.
+		 * @return New value.
+		 */
+		public T apply(T from);
+		
+	}
 	
 }
