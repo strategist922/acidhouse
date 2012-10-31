@@ -5,6 +5,7 @@ and can be performed on JDK 6 and later Java platform.
 
 Documentation
 -------------
+* [Users Guide](https://github.com/eiichiro/acidhouse/wiki/Setup)
 * [Javadoc](http://apidocs.eiichiro.org/acidhouse/)
 
 Mailing Lists
