@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eiichiro.acidhouse</groupId>
   <artifactId>acidhouse</artifactId>
-  <version>0.6.1</version>
+  <version>0.6.2-SNAPSHOT</version>
   <name>Acid House</name>
   <description>NoSQL Killer Tune</description>
   <url>http://acidhouse.eiichiro.org/</url>
